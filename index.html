@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="images" href="images/img4.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="todo-app">
+            <h2>To-Do List <img src="images/img1.jpg" alt=""></h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your text" required>
+                <button onclick="addTask()" id="btn">Add</button>
+            </div>
+            <div class="api-row">
+                <label class="api-toggle">
+                    <input type="checkbox" id="api-toggle" checked>
+                    <span>Save to API</span>
+                </label>
+                <button onclick="fetchTodosFromAPI()" id="api-btn">Load Todos from API</button>
+            </div>
+            <div class="search-row">
+                <input type="text" id="search-box" placeholder="Search tasks..." oninput="searchTasks()">
+            </div>
+            <div class="date-filter-row">
+                <div class="date-input-group">
+                    <label for="from-date">From Date:</label>
+                    <input type="date" id="from-date" onchange="filterByDate()">
+                </div>
+                <div class="date-input-group">
+                    <label for="to-date">To Date:</label>
+                    <input type="date" id="to-date" onchange="filterByDate()">
+                </div>
+                <button onclick="clearDateFilter()" id="clear-date-btn">Clear Date Filter</button>
+            </div>
+            <ul id="list-container">
+                <!-- <li class="checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li> -->
+            </ul>
+            <div class="pagination-container">
+                <div class="pagination-info">
+                    <span id="pagination-info">Showing 1-10 of 0 todos</span>
+                </div>
+                <div class="pagination-controls">
+                    <button id="prev-btn" onclick="previousPage()" disabled>Previous</button>
+                    <div class="page-numbers" id="page-numbers">
+                        <!-- Page numbers will be generated here -->
+                    </div>
+                    <button id="next-btn" onclick="nextPage()" disabled>Next</button>
+                </div>
+                <div class="items-per-page">
+                    <label for="items-per-page">Items per page:</label>
+                    <select id="items-per-page" onchange="changeItemsPerPage()">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,896 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #153677, #4e085f);
+    padding: 10px;
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    background: linear-gradient(150deg, rgb(43, 7, 62), rgb(6, 46, 93));
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    min-height: 300px;
+    min-width: 400px;
+    border: 2px solid #5e19cc;
+}
+.todo-app h2 {
+    color: #04d5f0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-app h2 img {
+    height: 60px;
+    width: 52px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #d9dbe0;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+.api-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 0 10px;
+}
+
+.api-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #04d5f0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.api-toggle input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.api-toggle span {
+    user-select: none;
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+
+}
+
+#input-box {
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 16px 20px;
+    background: #44bd14;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+#api-btn {
+    background: #ff6b35;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+#api-btn:hover {
+    background: #e55a2b;
+}
+
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    color: white;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(images/img3.jpg);
+    background-size: cover;
+    background-position: center;
+    top: 8px;
+    left: 8px;
+
+}
+
+ul li.checked {
+    color: #794242;;
+    text-decoration: line-through;
+}
+ul li.checked::before {
+    background-image: url(images/img2.png);
+}
+ul li span {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #e75f5f;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    
+}
+ul li span:hover{
+    background: #edeef0;
+}
+
+.search-row {
+    margin-bottom: 20px;
+}
+
+#search-box {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #5e19cc;
+    border-radius: 25px;
+    background: #d9dbe0;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#search-box:focus {
+    border-color: #04d5f0;
+    box-shadow: 0 0 5px rgba(4, 213, 240, 0.3);
+}
+
+#search-box::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+.date-filter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.date-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.date-input-group label {
+    color: #04d5f0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.date-input-group input[type="date"] {
+    padding: 8px 12px;
+    border: 2px solid #5e19cc;
+    border-radius: 15px;
+    background: #d9dbe0;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.date-input-group input[type="date"]:focus {
+    border-color: #04d5f0;
+    box-shadow: 0 0 5px rgba(4, 213, 240, 0.3);
+}
+
+#clear-date-btn {
+    background: #ff4757;
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 15px;
+    white-space: nowrap;
+}
+
+#clear-date-btn:hover {
+    background: #e63946;
+}
+
+.pagination-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid #5e19cc;
+}
+
+.pagination-info {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #04d5f0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.pagination-controls button {
+    background: #44bd14;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background: #3aa012;
+}
+
+.pagination-controls button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.page-btn {
+    background: #d9dbe0;
+    color: #333;
+    border: 2px solid #5e19cc;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 35px;
+}
+
+.page-btn:hover {
+    background: #04d5f0;
+    color: white;
+    border-color: #04d5f0;
+}
+
+.page-btn.active {
+    background: #04d5f0;
+    color: white;
+    border-color: #04d5f0;
+    font-weight: bold;
+}
+
+.items-per-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #04d5f0;
+    font-size: 14px;
+}
+
+.items-per-page select {
+    background: #d9dbe0;
+    border: 2px solid #5e19cc;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.items-per-page select:focus {
+    border-color: #04d5f0;
+    box-shadow: 0 0 5px rgba(4, 213, 240, 0.3);
+}
+
+/* Error Message Styles */
+.error-message {
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+    border-left: 4px solid;
+}
+
+.error-message.error {
+    background: rgba(255, 87, 87, 0.1);
+    color: #ff5757;
+    border-left-color: #ff5757;
+}
+
+.error-message.success {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4caf50;
+    border-left-color: #4caf50;
+}
+
+.error-message.warning {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border-left-color: #ffc107;
+}
+
+.error-message.info {
+    background: rgba(33, 150, 243, 0.1);
+    color: #2196f3;
+    border-left-color: #2196f3;
+}
+
+.error-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.error-close:hover {
+    opacity: 1;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading indicator for API calls */
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #04d5f0;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading State Styles */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-radius: inherit;
+}
+
+.loading-content {
+    background: linear-gradient(150deg, rgb(43, 7, 62), rgb(6, 46, 93));
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #5e19cc;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #04d5f0;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+.loading-text {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #04d5f0;
+}
+
+/* Button Loading State */
+.button-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+/* Skeleton Loading for Todo Items */
+.skeleton-item {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    height: 50px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Loading states for different elements */
+.loading-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+/* Pulse animation for loading indicators */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Shimmer effect for loading states */
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Loading overlay for specific containers */
+.todo-app {
+    position: relative;
+}
+
+/* Disable interactions during loading */
+.loading-disabled button,
+.loading-disabled input,
+.loading-disabled select,
+.loading-disabled li {
+    pointer-events: none !important;
+    opacity: 0.6 !important;
+}
+
+/* Loading state for pagination */
+.pagination-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Loading state for search and filters */
+.filter-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .todo-app {
+        width: 95%;
+        max-width: 400px;
+        padding: 20px 15px;
+        margin: 20px auto;
+        min-height: auto;
+        min-width: auto;
+    }
+    
+    .todo-app h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .todo-app h2 img {
+        height: 40px;
+        width: 35px;
+        margin-left: 8px;
+    }
+    
+    .row {
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .api-row {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+    
+    .search-row {
+        margin-bottom: 15px;
+    }
+    
+    .date-filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .date-input-group {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    
+    .date-input-group label {
+        min-width: 80px;
+        font-size: 13px;
+    }
+    
+    .date-input-group input[type="date"] {
+        flex: 1;
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    
+    #clear-date-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    .pagination-container {
+        margin-top: 15px;
+        padding: 12px;
+    }
+    
+    .pagination-info {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .pagination-controls {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .pagination-controls button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .page-numbers {
+        order: -1;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 3px;
+    }
+    
+    .page-btn {
+        min-width: 30px;
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+    
+    .items-per-page {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 12px;
+    }
+    
+    .items-per-page select {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+    
+    .error-message {
+        margin: 8px 0;
+        padding: 10px 12px;
+        font-size: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .error-close {
+        align-self: flex-end;
+        margin-left: 0;
+        font-size: 16px;
+    }
+    
+    .loading-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+    }
+    
+    .loading-text {
+        font-size: 14px;
+    }
+    
+    .button-spinner {
+        width: 14px;
+        height: 14px;
+        border-width: 2px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    ul li {
+        font-size: 15px;
+        padding: 10px 8px 10px 45px;
+    }
+    
+    ul li::before {
+        height: 24px;
+        width: 24px;
+        top: 6px;
+        left: 6px;
+    }
+    
+    ul li span {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        line-height: 35px;
+        top: 3px;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .todo-app {
+        width: 90%;
+        max-width: 600px;
+        padding: 30px 25px;
+    }
+    
+    .date-filter-row {
+        gap: 20px;
+    }
+    
+    .pagination-controls {
+        gap: 15px;
+    }
+}
+
+/* Large Screen Responsive */
+@media (min-width: 1025px) {
+    .todo-app {
+        max-width: 700px;
+    }
+    
+    .date-filter-row {
+        gap: 25px;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+    
+    .todo-app {
+        width: 98%;
+        padding: 15px 10px;
+        margin: 10px auto;
+    }
+    
+    .todo-app h2 {
+        font-size: 18px;
+    }
+    
+    .todo-app h2 img {
+        height: 35px;
+        width: 30px;
+    }
+    
+    .row {
+        padding: 8px;
+        gap: 8px;
+    }
+    
+    .api-row {
+        gap: 12px;
+        padding: 0 5px;
+    }
+    
+    .date-filter-row {
+        gap: 8px;
+    }
+    
+    .date-input-group label {
+        min-width: 70px;
+        font-size: 12px;
+    }
+    
+    .date-input-group input[type="date"] {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+    
+    .pagination-container {
+        padding: 10px;
+    }
+    
+    .pagination-info {
+        font-size: 11px;
+    }
+    
+    .page-btn {
+        min-width: 28px;
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+    
+    ul li {
+        font-size: 14px;
+        padding: 8px 8px 8px 40px;
+    }
+    
+    ul li::before {
+        height: 22px;
+        width: 22px;
+        top: 5px;
+        left: 5px;
+    }
+    
+    ul li span {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        line-height: 32px;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        min-height: auto;
+        padding: 10px;
+    }
+    
+    .todo-app {
+        margin: 10px auto;
+        padding: 15px;
+    }
+    
+    .todo-app h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .row {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .api-row {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .date-filter-row {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .pagination-controls {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+ 
